@@ -43,7 +43,7 @@ This repository documents my hands-on experience in building and managing a prof
 | :--- | :--- |
 | **Server OS** | Windows Server 2022 |
 | **Client OS** | Windows 11 Pro |
-| **Network Tools** | DHCP (Option 006), DNS, ICMP, IPConfig, NSLookup |
+| **Network Tools** | DHCP, DNS, ICMP, IPConfig, NSLookup |
 | **Virtualization** | Oracle VirtualBox (Internal Network mode) |
 | **Target Skills** | Linux CLI, Samba, Active Directory, GPO |
 
