@@ -1,5 +1,5 @@
 # Home-Lab-Win-Server
-My personal project on learning basics of Windows System Administration using Windows Server 2022
+My personal project on learning System Administration using Windows Server 2022 and Linux
 
 
 Windows Server & Enterprise Networking Home Lab
