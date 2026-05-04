@@ -11,43 +11,46 @@ This repository documents the implementation of a professional IT infrastructure
 
 Technical Implementations
 
-1. Identity & Access Management (AD DS):
+1. Identity & Access Management (AD DS)
+   
    Domain Configuration: Successfully deployed a Domain Controller for the xami.org forest.
 
-Organizational Unit: Designed a logical structure to manage Users, Computers, and Groups, mirroring a standard corporate department layout.
+   Organizational Unit: Designed a logical structure to manage Users, Computers, and Groups, mirroring a standard corporate department layout.
 
-RBAC (Role-Based Access Control): Implemented the principle of least privilege by separating standard user tasks from administrative duties.
+   RBAC (Role-Based Access Control): Implemented the principle of least privilege by separating standard user tasks from administrative duties.
 
 --------------------------
 
 2. Network Services (DHCP & DNS):
 
-Authoritative DNS: Configured local DNS for seamless name resolution across the domain.
+   Authoritative DNS: Configured local DNS for seamless name resolution across the domain.
 
-DHCP Scope Management: Established automated IP addressing with specific exclusion ranges and reservations.
+   DHCP Scope Management: Established automated IP addressing with specific exclusion ranges and reservations.
 
-Advanced Troubleshooting:
+   Advanced Troubleshooting:
 
-Identified and mitigated a DHCP conflict where the physical router (192.168.0.1) interfered with the lab environment.
-Resolved the conflict by migrating the lab to an Isolated Internal Network within the virtualization layer (Oracle VirtualBox).
+   Identified and mitigated a DHCP conflict where the physical router (192.168.0.1) interfered with the lab environment.
+   Resolved the conflict by migrating the lab to an Isolated Internal Network within the virtualization layer (Oracle VirtualBox).
 
 --------------------------
 
 3. Group Policy & Security Governance (GPO):
    
-Implemented several Group Policy Objects (GPOs) to enforce security and automation
+   Implemented several Group Policy Objects (GPOs) to enforce security and automation
 
-Data Loss Prevention (DLP): Restricted access to Removable Storage Devices (USB) to prevent unauthorized data exfiltration and malware entry.
+   Data Loss Prevention (DLP): Restricted access to Removable Storage Devices (USB) to prevent unauthorized data exfiltration and malware entry.
 
-System Hardening: Disabled access to the Control Panel and Command Prompt (CMD) for non-admin users to ensure environment stability.
+   System Hardening: Disabled access to the Control Panel and Command Prompt (CMD) for non-admin users to ensure environment stability.
 
-Automation: Configured Logon Scripts for automatic mapping of network drives (Z: Drive) for departmental file sharing.
+   Automation: Configured Logon Scripts for automatic mapping of network drives (Z: Drive) for departmental file sharing.
 
 --------------------------
 
 4. File System Security
-NTFS Permissions: Managed complex folder permissions (Read, Modify, Full Control) based on Active Directory security groups.
-Legacy App Support: Resolved application-level permission issues by modifying specific folder ACLs (Access Control Lists) instead of granting unnecessary local administrative rights to users.
+   
+   NTFS Permissions: Managed complex folder permissions (Read, Modify, Full Control) based on Active Directory security groups.
+
+   Legacy App Support: Resolved application-level permission issues by modifying specific folder ACLs (Access Control Lists) instead of granting unnecessary local administrative rights to users.
 
 --------------------------
 
