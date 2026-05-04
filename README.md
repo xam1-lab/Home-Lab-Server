@@ -1,119 +1,63 @@
-# Home-Lab-Server
-My personal project on learning System Administration using Windows Server 2022 and Linux
+# 🖥️ Home-Lab-Server | Cross-Platform Enterprise Simulation
+[![Status](https://img.shields.io/badge/Status-Active-success.svg)](#) [![OS](https://img.shields.io/badge/OS-Windows_/_Linux-blue.svg)](#) [![Environment](https://img.shields.io/badge/Environment-Isolated_Lab-orange.svg)](#)
 
---------------
+## 📌 Project Overview
+This repository documents my **Home-Lab-Server**, a hybrid enterprise environment designed to master System Administration. This project simulates a corporate infrastructure where **Windows Server 2022** and **Linux** coexist, focusing on Identity Management, Network Governance, and Cross-Platform Interoperability.
 
-Project Overview
+---
 
-This repository documents the implementation of a professional IT infrastructure laboratory. The goal of this project is to simulate a real-world corporate environment, focusing on Active Directory Domain Services (AD DS), Network Administration, and Security Governance using Windows Server 2022 and Windows 11 Pro.
+## 🚀 Technical Core (Windows Stack)
 
---------------------------
+### 🔑 Identity & Access Management (AD DS)
+*   **Domain Controller:** Deployed the `xami.org` forest root.
+*   **Active Directory Design:** Structured Organizational Units (OUs) to manage Users, Computers, and Security Groups.
+*   **RBAC Policy:** Implemented Role-Based Access Control to enforce the **Principle of Least Privilege (PoLP)**.
 
-Technical Implementations
+### 🌐 Network Infrastructure
+*   **Authoritative DHCP/DNS:** Managed automated IP assignment and local name resolution.
+*   **Conflict Resolution:** Identified and mitigated **Rogue DHCP** issues by implementing isolated **Internal Networking** in VirtualBox, ensuring the DC remains the primary network authority.
+*   **File Services:** Configured automated Network Drive mapping (Z: Drive) via Logon Scripts.
 
-1. Identity & Access Management (AD DS)
-   
-   Domain Configuration: Successfully deployed a Domain Controller for the xami.org forest.
+### 🛡️ Security & Group Policy (GPO)
+*   **DLP (Data Loss Prevention):** Enforced a global block on Removable Storage (USB) to prevent unauthorized data transfer.
+*   **System Hardening:** Restricted access to **CMD**, **PowerShell**, and **Control Panel** for standard user accounts.
+*   **NTFS Security:** Fine-tuned folder-level permissions (ACLs) to support legacy applications without granting local admin rights.
 
-   Organizational Unit: Designed a logical structure to manage Users, Computers, and Groups, mirroring a standard corporate department layout.
+---
 
-   RBAC (Role-Based Access Control): Implemented the principle of least privilege by separating standard user tasks from administrative duties.
+## 🗺️ Roadmap
 
---------------------------
+### Phase 1: Windows Foundations (Completed ✅)
+*   AD DS Deployment & Domain Join (Windows 11).
+*   GPO Security Hardening & Network Drive Mapping.
+*   DHCP/DNS Troubleshooting in isolated environments.
 
-2. Network Services (DHCP & DNS):
+### Phase 2: Advanced Deployment & Routing (In Progress 🚧)
+*   **WDS & MDT:** Implementing PXE-boot network installations for automated OS deployment.
+*   **RRAS Gateway:** Configuring the server as a router to provide firewalled internet access to the lab.
+*   **WSUS:** Centralized patch management for enterprise-wide updates.
 
-   Authoritative DNS: Configured local DNS for seamless name resolution across the domain.
+### Phase 3: Linux Integration & Interoperability (Upcoming 🐧)
+*   **Linux Server Deployment:** Integrating **Ubuntu/Rocky Linux** for specialized workloads.
+*   **AD-Linux Join:** Using **SSSD/LDAP** to allow Linux servers to recognize `xami.org` domain credentials.
+*   **Cross-Platform Shares:** Using **Samba** to bridge Windows and Linux file systems with consistent permissions.
 
-   DHCP Scope Management: Established automated IP addressing with specific exclusion ranges and reservations.
+### Phase 4: DevOps & Hybrid Cloud (Future 🚀)
+*   **Microsoft Entra ID:** Syncing local identities with **Azure AD**.
+*   **Ansible Automation:** Using Linux-based automation to manage both Windows and Linux nodes.
+*   **Monitoring Stack:** Deploying **Zabbix/Grafana** for real-time health and uptime tracking.
 
-   Advanced Troubleshooting:
+---
 
-   Identified and mitigated a DHCP conflict where the physical router (192.168.0.1) interfered with the lab environment.
-   Resolved the conflict by migrating the lab to an Isolated Internal Network within the virtualization layer (Oracle VirtualBox).
+## 🛠️ Tech Stack
+| Component | Technology |
+| :--- | :--- |
+| **Hypervisor** | Oracle VirtualBox |
+| **Server OS** | Windows Server 2022 |
+| **Client OS** | Windows 11 Pro |
+| **Future OS** | Ubuntu Server / Rocky Linux |
+| **Tools** | AD DS, GPO, DNS, DHCP, Samba, SSH |
 
---------------------------
+---
 
-3. Group Policy & Security Governance (GPO):
-   
-   Implemented several Group Policy Objects (GPOs) to enforce security and automation
-
-   Data Loss Prevention (DLP): Restricted access to Removable Storage Devices (USB) to prevent unauthorized data exfiltration and malware entry.
-
-   System Hardening: Disabled access to the Control Panel and Command Prompt (CMD) for non-admin users to ensure environment stability.
-
-   Automation: Configured Logon Scripts for automatic mapping of network drives (Z: Drive) for departmental file sharing.
-
---------------------------
-
-4. File System Security
-   
-   NTFS Permissions: Managed complex folder permissions (Read, Modify, Full Control) based on Active Directory security groups.
-
-   Legacy App Support: Resolved application-level permission issues by modifying specific folder ACLs (Access Control Lists) instead of granting unnecessary local administrative rights to users.
-
---------------------------
-
-Tools & Technologies Used
-
-Hypervisor: Oracle VirtualBox (Networking: Internal Network & NAT)
-
-Server OS: Windows Server 2022
-
-Client OS: Windows 11 Pro
-
-Networking: IPv4, DHCP, DNS, ICMP (Firewall management)
-
---------------------------
-
-Key Troubleshooting Skills Demonstrated
-
-Network Diagnostics: Proficient use of ipconfig /all, nslookup, ping, and gpupdate /force.
-
-System Analysis: Identifying why clients fail to join the domain or receive IP addresses, and implementing structural fixes (e.g., DNS Bindings, Firewall rules)
-
--------------------------
-
-Project Roadmap & Future Goals:
-
-This laboratory is a dynamic project. I am continuously scaling the infrastructure to transition from a basic setup to a complex, hybrid enterprise environment.
-
---------------------------
-
-Phase 1: Core Windows Infrastructure (Completed)
-
-      Domain Services: Deploy Domain Controller (xami.org) and join Windows 11 workstations.
-
-      Networking: Configure authoritative DHCP and DNS services with custom Scope Options.
-
-      Security Baseline: Implement GPOs for USB blocking, Control Panel restriction, and automated Network Drive mapping.
-
---------------------------
-
-Phase 2: Advanced Deployment & Management (In Progress)
-
-      Automated Deployment: Set up WDS (Windows Deployment Services) to simulate PXE-boot network installations for mass-rollouts.
-
-      Routing & Gateway: Configure RRAS (Routing and Remote Access) to transform the server into a gateway, providing firewalled internet access to the isolated lab.
-
-      Update Management: Deploy WSUS to centrally manage and approve security patches for all client machines.
-
---------------------------
-
-Phase 3: Linux Integration & Cross-Platform Interoperability (Upcoming)
-
-      Linux Server Integration: Deploy Ubuntu or Rocky Linux servers to handle specific network workloads (Web/Database).
-
-      Active Directory for Linux: Implement SSSD/LDAP to allow Linux servers to authenticate users using Windows Domain credentials.
-
-      Cross-Platform File Sharing: Configure Samba to enable seamless file exchange between Linux servers and Windows clients using NTFS-level permissions.
-
---------------------------
-
-Phase 4: Hybrid Cloud & DevOps Automation (Future)
-
-      Cloud Identity: Integrate the local lab with Microsoft Entra ID (formerly Azure AD) for a hybrid identity experience.
-
-      Infrastructure as Code (IaC): Use PowerShell and Ansible to automate user onboarding and server configuration across both Windows and Linux.
-
-      Centralized Monitoring: Deploy a Linux-based monitoring stack (Zabbix/Grafana) to track hardware health and network uptime for the entire lab.
+> **Note:** This lab is a reflection of my journey toward becoming a Cross-Platform Systems Administrator. Every issue resolved here is documented to build a deep understanding of Enterprise IT.
