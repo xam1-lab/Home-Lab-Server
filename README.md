@@ -12,8 +12,7 @@ This repository documents the implementation of a professional IT infrastructure
 Technical Implementations
 
 1. Identity & Access Management (AD DS):
-   
-Domain Configuration: Successfully deployed a Domain Controller for the xami.org forest.
+   Domain Configuration: Successfully deployed a Domain Controller for the xami.org forest.
 
 Organizational Unit: Designed a logical structure to manage Users, Computers, and Groups, mirroring a standard corporate department layout.
 
