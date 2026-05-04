@@ -92,11 +92,11 @@ Phase 1: Core Windows Infrastructure (Completed)
 
 Phase 2: Advanced Deployment & Management (In Progress)
 
-   Automated Deployment: Set up WDS (Windows Deployment Services) to simulate PXE-boot network installations for mass-rollouts.
+      Automated Deployment: Set up WDS (Windows Deployment Services) to simulate PXE-boot network installations for mass-rollouts.
 
-   Routing & Gateway: Configure RRAS (Routing and Remote Access) to transform the server into a gateway, providing firewalled internet access to the isolated lab.
+      Routing & Gateway: Configure RRAS (Routing and Remote Access) to transform the server into a gateway, providing firewalled internet access to the isolated lab.
 
-   Update Management: Deploy WSUS to centrally manage and approve security patches for all client machines.
+      Update Management: Deploy WSUS to centrally manage and approve security patches for all client machines.
 
 --------------------------
 
