@@ -82,11 +82,11 @@ This laboratory is a dynamic project. I am continuously scaling the infrastructu
 
 Phase 1: Core Windows Infrastructure (Completed)
 
-   Domain Services: Deploy Domain Controller (xami.org) and join Windows 11 workstations.
+      Domain Services: Deploy Domain Controller (xami.org) and join Windows 11 workstations.
 
-   Networking: Configure authoritative DHCP and DNS services with custom Scope Options.
+      Networking: Configure authoritative DHCP and DNS services with custom Scope Options.
 
-   Security Baseline: Implement GPOs for USB blocking, Control Panel restriction, and automated Network Drive mapping.
+      Security Baseline: Implement GPOs for USB blocking, Control Panel restriction, and automated Network Drive mapping.
 
 --------------------------
 
@@ -102,18 +102,18 @@ Phase 2: Advanced Deployment & Management (In Progress)
 
 Phase 3: Linux Integration & Cross-Platform Interoperability (Upcoming)
 
-   Linux Server Integration: Deploy Ubuntu or Rocky Linux servers to handle specific network workloads (Web/Database).
+      Linux Server Integration: Deploy Ubuntu or Rocky Linux servers to handle specific network workloads (Web/Database).
 
-   Active Directory for Linux: Implement SSSD/LDAP to allow Linux servers to authenticate users using Windows Domain credentials.
+      Active Directory for Linux: Implement SSSD/LDAP to allow Linux servers to authenticate users using Windows Domain credentials.
 
-   Cross-Platform File Sharing: Configure Samba to enable seamless file exchange between Linux servers and Windows clients using NTFS-level permissions.
+      Cross-Platform File Sharing: Configure Samba to enable seamless file exchange between Linux servers and Windows clients using NTFS-level permissions.
 
 --------------------------
 
 Phase 4: Hybrid Cloud & DevOps Automation (Future)
 
-   Cloud Identity: Integrate the local lab with Microsoft Entra ID (formerly Azure AD) for a hybrid identity experience.
+      Cloud Identity: Integrate the local lab with Microsoft Entra ID (formerly Azure AD) for a hybrid identity experience.
 
-   Infrastructure as Code (IaC): Use PowerShell and Ansible to automate user onboarding and server configuration across both Windows and Linux.
+      Infrastructure as Code (IaC): Use PowerShell and Ansible to automate user onboarding and server configuration across both Windows and Linux.
 
-   Centralized Monitoring: Deploy a Linux-based monitoring stack (Zabbix/Grafana) to track hardware health and network uptime for the entire lab.
+      Centralized Monitoring: Deploy a Linux-based monitoring stack (Zabbix/Grafana) to track hardware health and network uptime for the entire lab.
