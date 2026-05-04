@@ -1,9 +1,6 @@
 # Home-Lab-Win-Server
 My personal project on learning System Administration using Windows Server 2022 and Linux
 
-
-Windows Server & Enterprise Networking Home Lab
-
 --------------
 
 Project Overview
