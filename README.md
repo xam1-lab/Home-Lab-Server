@@ -1,4 +1,4 @@
-# Home-Lab-Win-Server
+# Home-Lab-Server
 My personal project on learning System Administration using Windows Server 2022 and Linux
 
 --------------
