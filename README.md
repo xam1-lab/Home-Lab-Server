@@ -1,63 +1,53 @@
-# 🖥️ Home-Lab-Server | Cross-Platform Enterprise Simulation
-[![Status](https://img.shields.io/badge/Status-Active-success.svg)](#) [![OS](https://img.shields.io/badge/OS-Windows_/_Linux-blue.svg)](#) [![Environment](https://img.shields.io/badge/Environment-Isolated_Lab-orange.svg)](#)
+# 🖥️ Home-Lab-Server | Windows & Linux Administration
+[![Status](https://img.shields.io/badge/Status-Active-success.svg)](#) [![Lab](https://img.shields.io/badge/Focus-Infrastructure_&_Troubleshooting-blue.svg)](#)
 
 ## 📌 Project Overview
-This repository documents my **Home-Lab-Server**, a hybrid enterprise environment designed to master System Administration. This project simulates a corporate infrastructure where **Windows Server 2022** and **Linux** coexist, focusing on Identity Management, Network Governance, and Cross-Platform Interoperability.
+This repository documents my hands-on experience in building and managing a professional IT environment. It covers the transition from a standard Windows setup to a structured, isolated network where I manage **Active Directory**, solve real-world **Networking conflicts**, and develop independent **Linux Server** skills to serve Windows-based users.
 
 ---
 
-## 🚀 Technical Core (Windows Stack)
+## 🛠️ Work History
 
-### 🔑 Identity & Access Management (AD DS)
-*   **Domain Controller:** Deployed the `xami.org` forest root.
-*   **Active Directory Design:** Structured Organizational Units (OUs) to manage Users, Computers, and Security Groups.
-*   **RBAC Policy:** Implemented Role-Based Access Control to enforce the **Principle of Least Privilege (PoLP)**.
+### 1. Network Isolation & Troubleshooting
+*   **DHCP Mitigation:** Identified a conflict where the physical home router (`192.168.0.1`) was competing with the Windows Server DHCP. 
+*   **Internal Network Migration:** Successfully isolated the laboratory environment using **VirtualBox Internal Networking** to ensure the Domain Controller is the sole authority for IP assignments.
+*   **DNS Resolution:** Fixed `ping` and host discovery issues (`xami.org`) by reconfiguring DHCP Scope Option **006 (DNS Servers)** and flushing client-side DNS caches.
 
-### 🌐 Network Infrastructure
-*   **Authoritative DHCP/DNS:** Managed automated IP assignment and local name resolution.
-*   **Conflict Resolution:** Identified and mitigated **DHCP** issues by implementing isolated **Internal Networking** in VirtualBox, ensuring the DC remains the primary network authority.
-*   **File Services:** Configured automated Network Drive mapping (Z: Drive) via Logon Scripts.
-
-### 🛡️ Security & Group Policy (GPO)
-*   **DLP (Data Loss Prevention):** Enforced a global block on Removable Storage (USB) to prevent unauthorized data transfer.
-*   **System Hardening:** Restricted access to **CMD**, **PowerShell**, and **Control Panel** for standard user accounts.
-*   **NTFS Security:** Fine-tuned folder-level permissions (ACLs) to support legacy applications without granting local admin rights.
+### 2. Windows Server & Domain Management
+*   **Active Directory (AD DS):** Managed the `xami.org` domain, including User and Organizational Unit (OU) management.
+*   **Group Policy Objects (GPO):** Implemented enterprise-level security:
+    *   **USB/Removable Storage Block:** Disabled external drive access for security.
+    *   **UI Restrictions:** Disabled CMD and Control Panel for standard users.
+    *   **Automation:** Set up automated Network Drive mapping (Z: Drive) via Logon Scripts.
+*   **NTFS Permissions:** Resolved application errors by adjusting folder-level access instead of granting unnecessary Admin rights (Principle of Least Privilege).
 
 ---
 
 ## 🗺️ Roadmap
 
-### Phase 1: Windows Foundations (Completed ✅)
-*   AD DS Deployment & Domain Join (Windows 11).
-*   GPO Security Hardening & Network Drive Mapping.
-*   DHCP/DNS Troubleshooting in isolated environments.
+### Phase 1: Advanced Network Routing (Next Up)
+*   **Gateway Configuration:** Transforming the Windows Server into a router using **RRAS (Routing and Remote Access)** to provide controlled internet access to the isolated Windows 11 clients.
 
-### Phase 2: Advanced Deployment & Routing (In Progress 🚧)
-*   **WDS & MDT:** Implementing PXE-boot network installations for automated OS deployment.
-*   **RRAS Gateway:** Configuring the server as a router to provide firewalled internet access to the lab.
-*   **WSUS:** Centralized patch management for enterprise-wide updates.
+### Phase 2: Independent Linux Mastery
+*   **Linux Server Deployment:** Setting up a dedicated Linux server (Ubuntu/Rocky) to run independently of the Windows GUI.
+*   **Cross-Platform Interoperability:** Learning to use the Linux server as a backend to serve Windows users (Samba File Sharing, SSH Management).
 
-### Phase 3: Linux Integration & Interoperability (Upcoming 🐧)
-*   **Linux Server Deployment:** Integrating **Ubuntu/Rocky Linux** for specialized workloads.
-*   **AD-Linux Join:** Using **SSSD/LDAP** to allow Linux servers to recognize `xami.org` domain credentials.
-*   **Cross-Platform Shares:** Using **Samba** to bridge Windows and Linux file systems with consistent permissions.
-
-### Phase 4: DevOps & Hybrid Cloud (Future 🚀)
-*   **Microsoft Entra ID:** Syncing local identities with **Azure AD**.
-*   **Ansible Automation:** Using Linux-based automation to manage both Windows and Linux nodes.
-*   **Monitoring Stack:** Deploying **Zabbix/Grafana** for real-time health and uptime tracking.
+### Phase 3: Infrastructure Automation
+*   **Mass Deployment:** Implementing **WDS (Windows Deployment Services)** for network-based OS installations.
+*   **Hybrid Management:** Learning to manage both Windows and Linux environments using command-line tools.
 
 ---
 
-## 🛠️ Tech Stack
+## 🧰 Tech Stack
 | Component | Technology |
 | :--- | :--- |
-| **Hypervisor** | Oracle VirtualBox |
 | **Server OS** | Windows Server 2022 |
 | **Client OS** | Windows 11 Pro |
-| **Future OS** | Ubuntu Server / Rocky Linux |
-| **Tools** | AD DS, GPO, DNS, DHCP, Samba, SSH |
+| **Network Tools** | DHCP (Option 006), DNS, ICMP, IPConfig, NSLookup |
+| **Virtualization** | Oracle VirtualBox (Internal Network mode) |
+| **Target Skills** | Linux CLI, Samba, Active Directory, GPO |
 
 ---
 
-> **Note:** This lab is a reflection of my journey toward becoming a Cross-Platform Systems Administrator. Every issue resolved here is documented to build a deep understanding of Enterprise IT.
+**Troubleshooting Log Summary:**
+Today's focus was on **Network Authority**. By isolating the lab from the physical router and forcing DNS resolution through the Domain Controller, I achieved a stable environment where all services (DHCP, GPO, and Name Resolution) work as they would in a real company.
