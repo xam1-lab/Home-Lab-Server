@@ -11,7 +11,7 @@ This repository documents the implementation of a professional IT infrastructure
 
 Technical Implementations
 
-1. Identity & Access Management (AD DS)
+1. Identity & Access Management (AD DS):
    
 Domain Configuration: Successfully deployed a Domain Controller for the xami.org forest.
 
@@ -21,7 +21,7 @@ RBAC (Role-Based Access Control): Implemented the principle of least privilege b
 
 --------------------------
 
-3. Network Services (DHCP & DNS)
+2. Network Services (DHCP & DNS):
 
 Authoritative DNS: Configured local DNS for seamless name resolution across the domain.
 
@@ -34,7 +34,7 @@ Resolved the conflict by migrating the lab to an Isolated Internal Network withi
 
 --------------------------
 
-5. Group Policy & Security Governance (GPO)
+3. Group Policy & Security Governance (GPO):
    
 Implemented several Group Policy Objects (GPOs) to enforce security and automation
 
@@ -46,7 +46,7 @@ Automation: Configured Logon Scripts for automatic mapping of network drives (Z:
 
 --------------------------
 
-7. File System Security
+4. File System Security
 NTFS Permissions: Managed complex folder permissions (Read, Modify, Full Control) based on Active Directory security groups.
 Legacy App Support: Resolved application-level permission issues by modifying specific folder ACLs (Access Control Lists) instead of granting unnecessary local administrative rights to users.
 
