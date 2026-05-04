@@ -15,7 +15,7 @@ This repository documents my **Home-Lab-Server**, a hybrid enterprise environmen
 
 ### 🌐 Network Infrastructure
 *   **Authoritative DHCP/DNS:** Managed automated IP assignment and local name resolution.
-*   **Conflict Resolution:** Identified and mitigated **Rogue DHCP** issues by implementing isolated **Internal Networking** in VirtualBox, ensuring the DC remains the primary network authority.
+*   **Conflict Resolution:** Identified and mitigated **DHCP** issues by implementing isolated **Internal Networking** in VirtualBox, ensuring the DC remains the primary network authority.
 *   **File Services:** Configured automated Network Drive mapping (Z: Drive) via Logon Scripts.
 
 ### 🛡️ Security & Group Policy (GPO)
