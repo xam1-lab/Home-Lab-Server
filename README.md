@@ -6,58 +6,57 @@ This repository documents my hands-on experience in building and managing a prof
 
 ---
 
-## 🛠️ Work History
+## 🛠️ Work History & Completed Milestones
 
-### 1. Advanced Network Routing & Internet Access (NAT)
-* Edge Router Implementation: Transformed Windows Server 2022 into a functional software router using the RRAS (Routing and Remote Access) role.
-* NAT Configuration: Successfully implemented Network Address Translation (NAT), allowing Windows 11 clients in an isolated "Internal Network" to access the internet securely via the server’s WAN interface.
-* DNS Forwarding: Configured DNS Forwarders (8.8.8.8, 1.1.1.1) on the Domain Controller to resolve external queries (YouTube, Google) for domain-joined clients.
-* DHCP Gateway Integration: Updated DHCP Scope Option 003 (Router) to automatically assign the server’s IP as the Default Gateway for all clients, ensuring seamless connectivity.
+### 1. Network Isolation & Authority
+* **DHCP Mitigation:** Identified and resolved a conflict where the physical home router was competing with the Windows Server DHCP service.
+* **Internal Network Migration:** Isolated the lab environment using **VirtualBox Internal Networking** (it-lab) to ensure the Domain Controller is the sole authority for IP assignments.
+* **DNS Resolution:** Fixed `ping` and host discovery issues for `xami.org` by reconfiguring DHCP Scope Option **006 (DNS Servers)**.
 
-### 2. Network Isolation & Troubleshooting
-* DHCP Mitigation: Identified and resolved a conflict where the physical home router (192.168.0.1) was competing with the Windows Server DHCP. 
-* Internal Network Migration: Isolated the lab environment using VirtualBox Internal Networking, establishing the Domain Controller as the sole authority for IP assignments.
-* DNS Resolution: Fixed ping and host discovery issues (xami.org) by reconfiguring DHCP Scope Option 006 (DNS Servers) and flushing client-side caches.
+### 2. Gateway, Routing & Internet Access
+* **RRAS Implementation:** Configured **Routing and Remote Access Services (RRAS)** on the Windows Server to act as a software router.
+* **NAT (Network Address Translation):** Set up a NAT interface to bridge the isolated internal network with the physical network adapter. This provided controlled internet access to the Windows 11 clients while maintaining their isolation from the physical home network.
+* **Dual-Homing:** Managed a dual-NIC setup on the server (NAT adapter for internet and Internal adapter for the lab).
 
-### 3. Windows Server & Domain Management
-* Active Directory (AD DS): Managed the xami.org domain, including User and Organizational Unit (OU) management.
-* Group Policy Objects (GPO): Implemented enterprise-level security:
-    * USB/Removable Storage Block: Disabled external drive access for security.
-    * UI Restrictions: Disabled CMD and Control Panel for standard users.
-    * Automation: Set up automated Network Drive mapping (Z: Drive) via Logon Scripts.
-* NTFS Permissions: Resolved application errors by adjusting folder-level access instead of granting unnecessary Admin rights (Principle of Least Privilege).
+### 3. Windows Server & Domain Management (xami.org)
+* **Active Directory (AD DS):** Implemented a domain structure with hierarchical Organizational Units (OUs).
+* **Group Policy Objects (GPO):**
+    * **Security:** Disabled USB storage access and restricted CMD/Control Panel for standard users.
+    * **Automation:** Configured automated network drive mapping (Z: Drive) via Logon Scripts.
+* **NTFS Permissions:** Applied the **Principle of Least Privilege** by fine-tuning folder-level permissions instead of granting unnecessary admin rights.
+
+### 4. Data Protection & Disaster Recovery
+* **Volume Shadow Copy Service (VSS):** Configured "Self-Service" file recovery, allowing users to restore previous versions of documents (Shadow Copies) without admin help.
+* **Windows Server Backup (WSB):**
+    * Implemented a **Bare Metal Recovery** plan using a dedicated virtual hard drive.
+    * Mastered **File Locking Management** via *Computer Management* to resolve "file in use" errors during restoration.
 
 ---
 
 ## 🗺️ Roadmap
 
-### Phase 1: Independent Linux Mastery (Current Focus)
-* Linux Server Deployment: Setting up a dedicated Linux server (Ubuntu/Rocky) to run independently of the Windows GUI.
-* Cross-Platform Interoperability: Learning to use the Linux server as a backend to serve Windows users (Samba File Sharing, SSH Management).
+### Phase 1: Independent Linux Mastery (Next Up)
+* **Ubuntu Desktop Deployment:** Installing a Linux server with a GUI as a standalone unit within the network.
+* **Cross-Platform Interoperability:** Configuring **Samba (SMB)** services to enable seamless file sharing between Linux and Windows users within the `xami.org` domain.
 
-### Phase 2: Data Protection & Damage Control
-* Windows Backup: Implementing Windows Server Backup (bare-metal vs. file-level) and managing Shadow Copies (VSS) for quick file recovery.
-* Linux Data Integrity: Mastering `rsync` for incremental backups and learning `tar` archiving for configuration snapshots.
-* Disaster Recovery: Simulating "Damage Control" scenarios (e.g., deleting a critical system file or breaking a bootloader) and performing recovery without data loss.
-* Offsite Storage: Testing the 3-2-1 Backup Rule by syncing local lab data to a secondary virtual disk or cloud storage.
-
-### Phase 3: Infrastructure Automation
-* Mass Deployment: Implementing WDS (Windows Deployment Services) for network-based OS installations.
-* Hybrid Management: Learning to manage both Windows and Linux environments using command-line tools (PowerShell & Bash).
+### Phase 2: Infrastructure Automation & Deployment
+* **Mass Deployment:** Implementing **WDS (Windows Deployment Services)** for network-based automated OS installations.
+* **Hybrid Management:** Mastering mixed-environment administration using PowerShell (Windows) and Bash (Linux) side-by-side.
 
 ---
 
-## 🧰 Tech Stack
+## 🧰 Tech Stack & Tools
 | Component | Technology |
 | :--- | :--- |
-| Server OS | Windows Server 2022 |
-| Client OS | Windows 11 Pro |
-| Networking | RRAS, NAT, DHCP, DNS, ICMP |
-| Recovery | Windows Backup, VSS, rsync, tar |
-| Virtualization | Oracle VirtualBox (Internal & NAT Modes) |
-| Target Skills | Linux CLI, Samba, Active Directory, GPO |
+| **Server OS** | Windows Server 2022 |
+| **Client OS** | Windows 11 Pro, Ubuntu Desktop 24.04 LTS |
+| **Network Services** | DHCP, DNS, RRAS (NAT), VSS, SMB/Samba |
+| **Backup** | Windows Server Backup (WSB), Shadow Copies |
+| **Virtualization** | Oracle VirtualBox (Internal Network mode) |
+| **Tools** | PowerShell, CMD, Netplan, Nano, WBAdmin |
 
 ---
 
-**Troubleshooting Log Summary:**
-The latest milestone was achieving Network Authority & Routing. By transforming the server into a NAT Gateway, I created a stable environment where clients have internet access while remaining completely isolated from the physical home network. This setup perfectly mirrors a corporate "Edge" configuration.
+## 📝 Troubleshooting Log Summary
+* **Routing Success:** Achieving internet access within an isolated subnet was a success. By correctly configuring RRAS and NAT, I successfully simulated a real-world enterprise gateway.
+* **Data Integrity:** The addition of VSS and WSB ensures the lab is resilient against data loss. The environment is now robust and ready for the integration of the Linux ecosystem.
