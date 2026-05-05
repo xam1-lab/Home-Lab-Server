@@ -59,4 +59,4 @@ This repository documents my hands-on experience in building and managing a prof
 
 ## 📝 Troubleshooting Log Summary
 * **Routing Success:** Achieving internet access within an isolated subnet was a success. By correctly configuring RRAS and NAT, I successfully simulated a real-world enterprise gateway.
-* **Data Integrity:** The addition of VSS and WSB ensures the lab is resilient against data loss. The environment is now robust and ready for the integration of the Linux ecosystem.
+* **Data Integrity:** The addition of VSS and WSB ensures the lab is resilient against data loss. The environment is now robust and ready for the integration of the Linux system.
