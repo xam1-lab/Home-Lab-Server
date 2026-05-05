@@ -13,7 +13,7 @@ This repository documents my hands-on experience in building and managing a prof
 * **Internal Network Migration:** Isolated the lab environment using **VirtualBox Internal Networking** (it-lab) to ensure the Domain Controller is the sole authority for IP assignments.
 * **DNS Resolution:** Fixed `ping` and host discovery issues for `xami.org` by reconfiguring DHCP Scope Option **006 (DNS Servers)**.
 
-### 2. Gateway, Routing & Internet Access
+### 2. Gateway, Routing & Internet Access (Completed)
 * **RRAS Implementation:** Configured **Routing and Remote Access Services (RRAS)** on the Windows Server to act as a software router.
 * **NAT (Network Address Translation):** Set up a NAT interface to bridge the isolated internal network with the physical network adapter. This provided controlled internet access to the Windows 11 clients while maintaining their isolation from the physical home network.
 * **Dual-Homing:** Managed a dual-NIC setup on the server (NAT adapter for internet and Internal adapter for the lab).
@@ -57,6 +57,38 @@ This repository documents my hands-on experience in building and managing a prof
 
 ---
 
-## 📝 Troubleshooting Log Summary
-* **Routing Success:** Achieving internet access within an isolated subnet was a success. By correctly configuring RRAS and NAT, I successfully simulated a real-world enterprise gateway.
-* **Data Integrity:** The addition of VSS and WSB ensures the lab is resilient against data loss. The environment is now robust and ready for the integration of the Linux system.
+## 🛡️ Troubleshooting & Technical Log
+
+This log documents critical technical challenges encountered during the infrastructure build and the systematic logic used to resolve them.
+
+### 1. Network Authority & DHCP Conflicts
+* **The Challenge:** The laboratory environment was receiving IP addresses from the physical home router (192.168.0.1), creating a conflict with the Windows Server DHCP role.
+* **The Resolution:** Migrated all VirtualBox network adapters to **Internal Networking** mode. This successfully isolated the lab, establishing the Windows Server as the sole authority for IP assignments.
+
+### 2. DNS Resolution & Domain Connectivity
+* **The Challenge:** Windows 11 clients were unable to join the `xami.org` domain or resolve the host by name, despite having valid IP configurations.
+* **The Resolution:** Identified that **DHCP Scope Option 006 (DNS Servers)** was not pointing to the Domain Controller's static IP. Corrected the scope and executed a DNS flush on the clients to restore resolution.
+
+### 3. Gateway & Internet Routing (NAT/RRAS)
+* **The Challenge:** Clients in the isolated internal network required internet access for updates without direct exposure to the physical home network.
+* **The Resolution:** Implemented **Routing and Remote Access Services (RRAS)** with **NAT** on a dual-homed Windows Server. This bridged internal traffic to the external network, effectively acting as an enterprise-grade software router.
+
+### 4. Volume Shadow Copy Service (VSS) Implementation
+* **The Challenge:** Accidental file deletion or overwrites led to high administrative overhead for manual restores.
+* **The Resolution:** Configured **Volume Shadow Copies** on server storage volumes. This enabled "Self-Service" recovery, allowing users to restore previous versions of documents independently via the "Previous Versions" tab.
+
+### 5. The "File in Use" Restoration Error
+* **The Challenge:** During VSS testing, the system blocked file restoration because the file was being accessed by a remote network session.
+* **The Resolution:** Utilized the **Shared Folders** console (`fsmgmt.msc`) to identify and force-close open sessions, ensuring backup integrity during the restoration process.
+
+### 6. Bare Metal Recovery & Backup Strategy
+* **The Challenge:** Lack of a full-system recovery plan left the `xami.org` infrastructure vulnerable to total system failure.
+* **The Resolution:** Configured **Windows Server Backup (WSB)** on a dedicated virtual hard drive. Successfully implemented a **Full Server (System State)** backup plan, ensuring the environment is prepared for **Bare Metal Recovery**.
+
+### 7. NTFS Permission Layers & "Least Privilege"
+* **The Challenge:** Users added to the `IT_Sektor_FullAccess` group were unable to access folders, and some applications failed due to restricted rights.
+* **The Resolution:** I adjusted both **NTFS and Share permissions** rather than granting unnecessary Admin rights. Identified that users must **Sign-out and Sign-in** to refresh their security tokens after group membership changes.
+
+---
+
+**Current Project Status:** The Windows infrastructure is stable, routed, and backed up. I am now moving into **Phase 2**, focusing on **Linux Server deployment** and cross-platform interoperability.
