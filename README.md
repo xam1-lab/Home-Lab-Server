@@ -35,7 +35,7 @@ This repository documents my hands-on experience in building and managing a prof
 * Linux Server Deployment: Setting up a dedicated Linux server (Ubuntu/Rocky) to run independently of the Windows GUI.
 * Cross-Platform Interoperability: Learning to use the Linux server as a backend to serve Windows users (Samba File Sharing, SSH Management).
 
-### Phase 2: Data Protection & Damage Control (New)
+### Phase 2: Data Protection & Damage Control
 * Windows Backup: Implementing Windows Server Backup (bare-metal vs. file-level) and managing Shadow Copies (VSS) for quick file recovery.
 * Linux Data Integrity: Mastering `rsync` for incremental backups and learning `tar` archiving for configuration snapshots.
 * Disaster Recovery: Simulating "Damage Control" scenarios (e.g., deleting a critical system file or breaking a bootloader) and performing recovery without data loss.
